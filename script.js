@@ -64,14 +64,15 @@ viewButton.onclick = async function() {
         trialsContainer.innerHTML = "<p>No trials found for the selected disease.</p>";
         return;
     }
+    trialsContainer.innerHTML = "";
     for (const trial of trials) {
-        const trialDiv = document.createElement('div');
-        trialDiv.className = 'trial';
-        trialDiv.innerHTML = `
+        const trialDiv = `
+        <div class="trial">
             <h3>${trial.title} | ${trial.lead_org}</h3>
             <p><strong>Summary:</strong> ${trial.summary}</p>
             <p><strong>Expected Completion Date:</strong> ${trial.expected_completion_date}</p>
+        </div>
         `;
-        trialsContainer.appendChild(trialDiv);
+        trialsContainer.innerHTML += trialDiv;
     }
 }
