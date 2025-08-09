@@ -7,4 +7,6 @@ body {
     border-radius: 10px;
     margin: 10px;
     padding: 20px;
+    /* use roboto font */
+    font-family: 'Roboto', sans-serif;
 }
