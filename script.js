@@ -72,7 +72,7 @@ viewButton.onclick = async function () {
         let color = "";
         let date = "Unknown";
         let year = "Unknown";
-        if (trial.expected_completion_date) {
+        if (trial.expected_completion_date != null && trial.expected_completion_date != undefined) {
             color = new Date(trial.expected_completion_date) < new Date() ? 'red' : 'green';
             date = trial.expected_completion_date;
             year = new Date(trial.expected_completion_date).getFullYear();
