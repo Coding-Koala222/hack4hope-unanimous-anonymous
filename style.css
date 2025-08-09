@@ -3,6 +3,9 @@ body {
 }
 
 .trial {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color: #ffffff;
     border: 1px solid #ddd;
     border-radius: 10px;
@@ -12,6 +15,10 @@ body {
     font-family: 'Roboto', sans-serif;
     position: relative;
     transition: transform 0.2s ease-in-out;
+}
+
+.trial .badge {
+    margin-left: 20px;
 }
 
 .trial:hover {
@@ -32,7 +39,7 @@ body {
 .trial h3.title {
     font-size: 1.5em;
     color: #333;
-    margin-bottom: 5px;
+    margin-bottom: 1px;
 }
 
 .trial p.lead-org {
