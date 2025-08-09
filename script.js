@@ -68,10 +68,16 @@ viewButton.onclick = async function() {
     for (const trial of trials) {
         const trialDiv = `
         <div class="trial">
-            <h3>${trial.title} | ${trial.lead_org}</h3>
+            <h3>
+                <span class="title">${trial.title}</span> | 
+                <span class="lead-org">${trial.lead_org}</span>
+            </h3>
             <p><strong>Summary:</strong> ${trial.summary}</p>
-            <p><strong>Expected Completion Date:</strong> ${trial.expected_completion_date}</p>
-        </div>
+            <div class="badge ${new Date(trial.expected_completion_date) < new Date() ? 'red' : 'green'}" 
+                 data-full-date="${trial.expected_completion_date}">
+                ${new Date(trial.expected_completion_date).getFullYear()}
+            </div>
+        </div>  
         `;
         trialsContainer.innerHTML += trialDiv;
     }
