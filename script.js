@@ -39,12 +39,14 @@ const viewButton = document.getElementById('view-trials');
 viewButton.onclick = async function() {
     const selectedOption = cancer_dropdown.options[cancer_dropdown.selectedIndex];
     const selectedCode = selectedOption.value;
-    console.log("Selected code:", selectedCode);
     // create an array of ids from the selected code
     const codes = selectedCode.split(',').map(code => code.trim());
+    console.log("Selected codes:", codes);
     const args = {
         ids: codes
     }
+    const trialsContainer = document.getElementById('trials-container');
+    trialsContainer.innerHTML = "Loading...";
     const response = await fetch(`/api/fetch_trials`, {
         method: 'POST',
         headers: {
@@ -58,8 +60,6 @@ viewButton.onclick = async function() {
     }
     const trials = await response.json();
 
-    const trialsContainer = document.getElementById('trials-container');
-    trialsContainer.innerHTML = "";
     if (trials.length === 0) {
         trialsContainer.innerHTML = "<p>No trials found for the selected disease.</p>";
         return;
