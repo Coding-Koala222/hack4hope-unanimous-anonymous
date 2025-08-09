@@ -1,92 +1,100 @@
 body {
-    background-color: lightblue;
+    background: linear-gradient(120deg, #f5f7fa, #e4ecf5);
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 20px;
 }
 
 .trial {
-    background-color: #ffffff;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin: 20px;
-    padding: 20px;
-    font-family: 'Roboto', sans-serif;
-    position: relative;
-    transition: transform 0.2s ease-in-out;
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
+    padding: 24px;
+    max-width: 800px;
+    margin: 20px auto;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .trial:hover {
-    transform: scale(1.02);
+    transform: translateY(-6px);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.12);
 }
 
-.trial h3 {
-    font-size: 1.5em;
-    color: #333;
+.trial-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 14px;
 }
 
-.trial h3 span {
-    font-size: 1.2em;
-    color: #555;
+.trial-text {
+    max-width: calc(100% - 90px);
 }
 
-.trial h3.title {
-    font-size: 1.5em;
-    color: #333;
+.trial .title {
+    font-size: 1.6em;
+    font-weight: 600;
+    color: #111827;
+    margin: 0;
 }
 
-.trial p.lead-org {
-    font-size: 1.2em;
-    color: #555;
-    margin-bottom: 10px;
+.trial .lead-org {
+    font-size: 1.1em;
+    color: #6b7280;
+    margin: 4px 0 0;
 }
 
-.trial p {
+.trial .summary {
     font-size: 1em;
-    color: #666;
-    line-height: 1.5;
+    color: #4b5563;
+    line-height: 1.6;
+    margin: 0;
 }
 
-.trial .badge {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    padding: 5px 10px;
+.badge {
+    padding: 6px 14px;
     border: 2px solid;
-    border-radius: 20px;
-    font-size: 0.9em;
-    font-weight: bold;
+    border-radius: 999px;
+    font-size: 0.85em;
+    font-weight: 600;
     cursor: pointer;
-    transition: border-color 0.3s ease, color 0.3s ease, transform 0.2s ease-in-out;
-    background-color: transparent;
+    background-color: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(8px);
+    transition: transform 0.2s ease, background-color 0.3s ease, color 0.3s ease;
+    white-space: nowrap;
 }
 
-.trial .badge.red {
-    border-color: #e74c3c;
-    color: #e74c3c;
+.badge.red {
+    border-color: #ef4444;
+    color: #ef4444;
 }
 
-.trial .badge.green {
-    border-color: #2ecc71;
-    color: #2ecc71;
+.badge.green {
+    border-color: #10b981;
+    color: #10b981;
 }
 
-.trial .badge:hover {
-    transform: scale(1.1);
+.badge:hover {
+    transform: scale(1.08);
+    background-color: currentColor;
+    color: #fff;
 }
 
-.trial .badge::after {
+.badge::after {
     content: attr(data-full-date);
     position: absolute;
-    top: 100%;
+    top: calc(100% + 8px);
     right: 0;
-    background-color: #333;
+    background-color: #111827;
     color: #fff;
-    padding: 5px;
-    border-radius: 5px;
-    font-size: 0.8em;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 0.78em;
     white-space: nowrap;
     display: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
-.trial .badge:hover::after {
+.badge:hover::after {
     display: block;
 }

@@ -1,5 +1,5 @@
 // use the `papaparse` library to read a CSV file in a JavaScript environment
-import { parse } from 'papaparse';
+import {parse} from 'papaparse';
 
 const filePath = 'diseases.csv'; // Path to your CSV file
 
@@ -36,7 +36,7 @@ for (const disease of diseases) {
 
 const viewButton = document.getElementById('view-trials');
 
-viewButton.onclick = async function() {
+viewButton.onclick = async function () {
     const selectedOption = cancer_dropdown.options[cancer_dropdown.selectedIndex];
     const selectedCode = selectedOption.value;
     // create an array of ids from the selected code
@@ -66,19 +66,23 @@ viewButton.onclick = async function() {
     }
     trialsContainer.innerHTML = "";
     for (const trial of trials) {
-        const trialDiv = `
-        <div class="trial">
-            <h3>
+        const trialDiv = document.createElement("div");
+        trialDiv.className = "trial";
+
+        trialDiv.innerHTML = `
+        <div class="trial-header">
+            <div class="trial-text">
                 <h3 class="title">${trial.title}</h3>
                 <p class="lead-org">${trial.lead_org}</p>
-            </h3>
-            <p>${trial.summary}</p>
+            </div>
             <div class="badge ${new Date(trial.expected_completion_date) < new Date() ? 'red' : 'green'}" 
                  data-full-date="${trial.expected_completion_date}">
                 ${new Date(trial.expected_completion_date).getFullYear()}
             </div>
-        </div>  
-        `;
-        trialsContainer.innerHTML += trialDiv;
+        </div>
+        <p class="summary">${trial.summary}</p>
+    `;
+
+        trialsContainer.appendChild(trialDiv);
     }
 }
