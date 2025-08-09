@@ -32,9 +32,9 @@ export default async function fetch_trials(req, res) {
             for (const trial of data) {
                 const lead_org =  trial.lead_org;
                 const eligibility = trial.eligibility;
-                let unstructured_trial_text = "";
+                let unstructured_trial_text = [];
                 for (const criterion of eligibility.unstructured) {
-                    unstructured_trial_text += criterion.display_order + ". " + criterion.description + "\n";
+                    unstructured_trial_text.push(criterion.description + "\n");
                 }
 
                 let structured_eligibility = eligibility.structured;
