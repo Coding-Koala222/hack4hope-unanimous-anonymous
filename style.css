@@ -21,7 +21,6 @@ body {
 .trial h3 {
     font-size: 1.5em;
     color: #333;
-    margin-bottom: 10px;
 }
 
 .trial h3 span {
@@ -32,7 +31,6 @@ body {
 .trial h3.title {
     font-size: 1.5em;
     color: #333;
-    margin-bottom: 1px;
 }
 
 .trial p.lead-org {
