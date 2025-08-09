@@ -33,3 +33,25 @@ for (const disease of diseases) {
         cancer_dropdown.appendChild(option);
     }
 }
+
+const viewButton = document.getElementById('view-trials');
+
+viewButton.onclick = async function() {
+    const selectedOption = cancer_dropdown.options[cancer_dropdown.selectedIndex];
+    const selectedCode = selectedOption.value;
+    // if code has commas, make a list of codes
+    const codesArray = selectedCode.split(',').map(code => code.trim());
+    const queryParams = new URLSearchParams({ ids: codesArray }).toString();
+    const response = await fetch(`/api/fetch_trials?${queryParams}`, {
+        method: 'GET', // Use GET method
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    });
+    if (!response.ok) {
+        console.error("Error fetching trials:", response.status, await response.text());
+        return;
+    }
+    const trials = await response.json();
+    console.log(trials);
+}

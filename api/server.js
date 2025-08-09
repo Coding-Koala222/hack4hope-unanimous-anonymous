@@ -5,7 +5,7 @@ import fetch_trials from './fetch_trials.js';
 // IMPORTANT: this is for dev purposes and only runs for testing
 
 const app = express();
-const PORT = 3000;
+const PORT = 5173;
 
 app.use(bodyParser.json()); // Parse JSON request bodies
 
