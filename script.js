@@ -39,9 +39,8 @@ const viewButton = document.getElementById('view-trials');
 viewButton.onclick = async function() {
     const selectedOption = cancer_dropdown.options[cancer_dropdown.selectedIndex];
     const selectedCode = selectedOption.value;
-    // if code has commas, make a list of codes
-    const codesArray = selectedCode.split(',').map(code => code.trim());
-    const queryParams = new URLSearchParams({ ids: codesArray }).toString();
+    // create a qury param with the selected code
+    const queryParams = new URLSearchParams({ ids: selectedCode });
     const response = await fetch(`/api/fetch_trials?${queryParams}`, {
         method: 'GET', // Use GET method
         headers: {
