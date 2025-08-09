@@ -67,17 +67,9 @@ viewButton.onclick = async function() {
         const trialDiv = document.createElement('div');
         trialDiv.className = 'trial';
         trialDiv.innerHTML = `
-            <h3>${trial.title}</h3>
-            <p><strong>NCT ID:</strong> ${trial.nct_id}</p>
-            <p><strong>Lead Organization:</strong> ${trial.lead_org}</p>
+            <h3>${trial.title} | ${trial.lead_org}</h3>
             <p><strong>Summary:</strong> ${trial.summary}</p>
             <p><strong>Expected Completion Date:</strong> ${trial.expected_completion_date}</p>
-            <h4>Structured Eligibility:</h4>
-            <ul>
-                ${trial.structured_eligibility.map(el => `<li>${el.description}</li>`).join('')}
-            </ul>
-            <h4>Unstructured Trial Text:</h4>
-            <pre>${trial.unstructured_trial_text.join('\n')}</pre>
         `;
         trialsContainer.appendChild(trialDiv);
     }
