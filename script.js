@@ -44,7 +44,7 @@ viewButton.onclick = async function() {
     const args = {
         ids: codes
     }
-    const response = await fetch(`/api/fetch_trials?${queryParams}`, {
+    const response = await fetch(`/api/fetch_trials`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
