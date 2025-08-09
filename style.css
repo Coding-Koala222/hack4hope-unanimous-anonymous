@@ -3,9 +3,6 @@ body {
 }
 
 .trial {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     background-color: #ffffff;
     border: 1px solid #ddd;
     border-radius: 10px;
@@ -15,10 +12,6 @@ body {
     font-family: 'Roboto', sans-serif;
     position: relative;
     transition: transform 0.2s ease-in-out;
-}
-
-.trial .badge {
-    margin-left: 20px;
 }
 
 .trial:hover {
