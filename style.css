@@ -77,7 +77,6 @@ body {
 .badge:hover {
     transform: scale(1.08);
     background-color: currentColor;
-    color: #fff;
 }
 
 .badge::after {
