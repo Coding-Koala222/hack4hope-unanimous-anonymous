@@ -2,20 +2,27 @@
   "name": "hack4hope-unanimous-anonymous",
   "version": "1.0.0",
   "description": "",
-  "main": "script.js",
-  "type": "module",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/Coding-Koala222/hack4hope-unanimous-anonymous.git"
   },
   "private": true,
+  "type": "module",
   "dependencies": {
     "body-parser": "^2.2.0",
+    "csv-parse": "^6.1.0",
     "dotenv": "^17.2.1",
     "express": "^5.1.0",
-    "node-fetch": "^3.3.2"
+    "fast-csv": "^5.0.5",
+    "fs-extra": "^11.3.1",
+    "node-fetch": "^3.3.2",
+    "papaparse": "^5.5.3",
+    "vite": "^6.0.7"
   }
 }
