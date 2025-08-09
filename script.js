@@ -39,6 +39,7 @@ const viewButton = document.getElementById('view-trials');
 viewButton.onclick = async function() {
     const selectedOption = cancer_dropdown.options[cancer_dropdown.selectedIndex];
     const selectedCode = selectedOption.value;
+    console.log("Selected code:", selectedCode);
     // create an array of ids from the selected code
     const codes = selectedCode.split(',').map(code => code.trim());
     const args = {
