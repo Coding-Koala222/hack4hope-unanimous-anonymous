@@ -39,13 +39,17 @@ const viewButton = document.getElementById('view-trials');
 viewButton.onclick = async function() {
     const selectedOption = cancer_dropdown.options[cancer_dropdown.selectedIndex];
     const selectedCode = selectedOption.value;
-    // create a qury param with the selected code
-    const queryParams = new URLSearchParams({ ids: selectedCode });
+    // create an array of ids from the selected code
+    const codes = selectedCode.split(',').map(code => code.trim());
+    const args = {
+        ids: codes
+    }
     const response = await fetch(`/api/fetch_trials?${queryParams}`, {
-        method: 'GET', // Use GET method
+        method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-        }
+        },
+        body: JSON.stringify(args)
     });
     if (!response.ok) {
         console.error("Error fetching trials:", response.status, await response.text());
