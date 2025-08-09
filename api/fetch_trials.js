@@ -9,9 +9,8 @@ const headers = {
 
 export default async function fetch_trials(req, res) {
     try {
-        const { codes } = req.body;
+        const { ids } = req.body;
         // split by comma and make a list of ids using codes
-        const ids = codes.split(',').map(code => code.trim());
         const search_url = `${BASE_URL}/trials`;
 
         let processed_data = [];
