@@ -15,7 +15,7 @@ body {
 }
 
 .trial:hover {
-    transform: scale(1.02); /* hover zoom */
+    transform: scale(1.02);
 }
 
 .trial h3 {
@@ -29,6 +29,18 @@ body {
     color: #555;
 }
 
+.trial h3.title {
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.trial p.lead-org {
+    font-size: 1.2em;
+    color: #555;
+    margin-bottom: 10px;
+}
+
 .trial p {
     font-size: 1em;
     color: #666;
@@ -40,40 +52,25 @@ body {
     top: 10px;
     right: 10px;
     padding: 5px 10px;
+    border: 2px solid;
     border-radius: 20px;
     font-size: 0.9em;
     font-weight: bold;
-    color: #fff;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+    transition: border-color 0.3s ease, color 0.3s ease, transform 0.2s ease-in-out;
+    background-color: transparent;
 }
 
 .trial .badge.red {
-    background-color: #e74c3c;
+    border-color: #e74c3c;
+    color: #e74c3c;
 }
 
 .trial .badge.green {
-    background-color: #2ecc71;
+    border-color: #2ecc71;
+    color: #2ecc71;
 }
 
 .trial .badge:hover {
     transform: scale(1.1);
-}
-
-.trial .badge::after {
-    content: attr(data-full-date);
-    position: absolute;
-    top: 100%;
-    right: 0;
-    background-color: #333;
-    color: #fff;
-    padding: 5px;
-    border-radius: 5px;
-    font-size: 0.8em;
-    white-space: nowrap;
-    display: none;
-}
-
-.trial .badge:hover::after {
-    display: block;
 }

@@ -69,10 +69,10 @@ viewButton.onclick = async function() {
         const trialDiv = `
         <div class="trial">
             <h3>
-                <span class="title">${trial.title}</span> | 
-                <span class="lead-org">${trial.lead_org}</span>
+                <h3 class="title">${trial.title}</h3>
+                <p class="lead-org">${trial.lead_org}</p>
             </h3>
-            <p><strong>Summary:</strong> ${trial.summary}</p>
+            <p>${trial.summary}</p>
             <div class="badge ${new Date(trial.expected_completion_date) < new Date() ? 'red' : 'green'}" 
                  data-full-date="${trial.expected_completion_date}">
                 ${new Date(trial.expected_completion_date).getFullYear()}
