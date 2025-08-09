@@ -18,9 +18,10 @@ export default async function fetch_trials(req, res) {
             const params = {
                 "diseases.nci_thesaurus_concept_id": id
             };
-            const response = await fetch(`${search_url}?${params}`, {
-                method: 'GET',
-                headers: headers
+            const response = await fetch(`${search_url}`, {
+                method: 'POST',
+                headers: headers,
+                body: JSON.stringify(params)
             });
             if (!response.ok) {
                 console.error("Error:", response.status, await response.text());
