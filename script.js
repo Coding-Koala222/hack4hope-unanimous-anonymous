@@ -69,15 +69,24 @@ viewButton.onclick = async function () {
         const trialDiv = document.createElement("div");
         trialDiv.className = "trial";
 
+        let expectedCompletionDateColor = "";
+        let year = "Unknown";
+        if (!trial.expected_completion_date) {
+            expectedCompletionDateColor = "yellow";
+        } else {
+            expectedCompletionDateColor = (trial.expected_completion_date < new Date()) ? 'red' : 'green';
+            year = new Date(trial.expected_completion_date).getFullYear();
+        }
+
         trialDiv.innerHTML = `
         <div class="trial-header">
             <div class="trial-text">
                 <h3 class="title">${trial.title}</h3>
                 <p class="lead-org">${trial.lead_org}</p>
             </div>
-            <div class="badge ${new Date(trial.expected_completion_date) < new Date() ? 'red' : 'green'}" 
-                 data-full-date="${trial.expected_completion_date}">
-                ${new Date(trial.expected_completion_date).getFullYear()}
+            <div class="badge ${new Date()}" 
+                 data-full-date="${expectedCompletionDateColor}">
+                ${year}
             </div>
         </div>
         <p class="summary">${trial.summary}</p>
