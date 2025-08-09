@@ -18,6 +18,7 @@ body {
 .trial:hover {
     transform: translateY(-6px);
     box-shadow: 0 12px 36px rgba(0, 0, 0, 0.12);
+    cursor: pointer;
 }
 
 .trial-header {
@@ -81,7 +82,7 @@ body {
 
 .badge:hover {
     transform: scale(1.08);
-    background-color: currentColor;
+    /*background-color: currentColor; */
 }
 
 .badge::after {
