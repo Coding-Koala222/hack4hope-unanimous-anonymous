@@ -66,6 +66,7 @@ viewButton.onclick = async function () {
     }
     trialsContainer.innerHTML = "";
     for (const trial of trials) {
+        console.log(trial)
         const trialDiv = document.createElement("div");
         trialDiv.className = "trial";
 
@@ -78,6 +79,35 @@ viewButton.onclick = async function () {
             year = new Date(trial.expected_completion_date).getFullYear();
         } else {
             color = "yellow";
+        }
+
+        let structured_eligibility = trial.structured_eligibility || {};
+        let minAge = structured_eligibility.min_age_in_years !== 999.0 ? structured_eligibility.min_age_in_years + " years minimum" : "No minimum age";
+        let maxAge = structured_eligibility.max_age_in_years !== 999.0 ? structured_eligibility.max_age_in_years + " years maximum" : "No maximum age";
+        let sex_badges = "";
+        if (structured_eligibility.sex === 'MALE') {
+            sex_badges += `
+            <div class="badge blue">
+                <i class="bi bi-gender-male"></i>
+            </div>
+            `;
+        } else if (structured_eligibility.sex === 'FEMALE') {
+            sex_badges += `
+            <div class="badge pink">
+                <i class="bi bi-gender-female"></i>
+            </div>
+            `;
+        } else {
+            sex_badges += `
+            <div class="badge blue">
+                <i class="bi bi-gender-male"></i>
+            </div>
+            `;
+            sex_badges += `
+            <div class="badge pink">
+                <i class="bi bi-gender-female"></i>
+            </div>
+            `;
         }
 
         trialDiv.innerHTML = `
