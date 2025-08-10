@@ -50,6 +50,13 @@ function loadInfo(trial) {
     mainPage.classList.add("hidden");
     const infoPage = document.getElementById('info_page');
     infoPage.classList.remove("hidden");
+
+    const trialTitle = document.getElementById('trial-title');
+    trialTitle.innerText = trial.title;
+    const trialSummary = document.getElementById('trial-summary');
+    trialSummary.innerText = trial.summary || "No summary available";
+    const trialOrg = document.getElementById('trial-org');
+    trialOrg.innerText = trial.lead_org || "No organization available";
 }
 
 const viewButton = document.getElementById('view-trials');
