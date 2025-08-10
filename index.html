@@ -1,36 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8">
     <title>Acesor</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  </head>
-  <body>
-    <h1 id="header"></h1>
-    <div id="start_page">
-      <select id="cancer-dropdown"></select>
-      <button id="view-trials">Submit</button>
-      <div id="trials-container">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body>
+<h1 id="header"></h1>
+<div id="start_page">
+    <select id="cancer-dropdown"></select>
+    <button id="view-trials">Submit</button>
+    <div id="trials-container">
 
-      </div>
     </div>
-    <div id="info_page" class="hidden">
-      <div class="horizontal-container">
-        <button id="back-button"><i class="bi bi-arrow-left"></i> Back</button>
+</div>
+<div id="info_page" class="hidden">
+    <div class="info-header">
+        <button id="back-button">
+            <i class="bi bi-arrow-left"></i>
+        </button>
         <div id="title-container">
-          <h1 id="trial-title"></h1>
-          <div id="trial-title-badges">
-
-          </div>
+            <h1 id="trial-title"></h1>
+            <div id="trial-title-badges"></div>
         </div>
-      </div>
-      <h3 id="trial-org"></h3>
-      <p id="trial-summary"></p>
     </div>
+    <h3 id="trial-org"></h3>
+    <p id="trial-summary"></p>
+</div>
 
 
-    <script src="script.js" type="module"></script>
-  </body>
+<script src="script.js" type="module"></script>
+</body>
 </html>

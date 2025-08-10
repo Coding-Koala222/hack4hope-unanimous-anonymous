@@ -129,9 +129,67 @@ body {
     display: none;
 }
 
+#info_page {
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
+    padding: 24px;
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+.info-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
 #back-button {
     all: unset;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #f3f4f6;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#back-button:hover {
+    background-color: #e5e7eb;
+    transform: scale(1.1);
+}
+
+#title-container {
+    flex-grow: 1;
+}
+
+#trial-title {
+    font-size: 1.8em;
+    font-weight: 600;
+    color: #111827;
+    margin: 0;
+}
+
+#trial-title-badges {
+    margin-top: 8px;
+    display: flex;
+    gap: 8px;
+}
+
+#trial-org {
+    font-size: 1.2em;
+    color: #6b7280;
+    margin: 16px 0 8px;
+}
+
+#trial-summary {
+    font-size: 1em;
+    color: #4b5563;
+    line-height: 1.6;
+    margin: 0;
 }
