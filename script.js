@@ -46,28 +46,66 @@ backBtn.onclick = function () {
 }
 
 function loadInfo(trial) {
-    // hide the main page
-    const mainPage = document.getElementById('start_page');
-    mainPage.classList.add("hidden");
+    document.getElementById('start_page').classList.add("hidden");
     const infoPage = document.getElementById('info_page');
     infoPage.classList.remove("hidden");
-    // add display flex
     infoPage.style.display = "flex";
 
-    const trialTitle = document.getElementById('trial-title');
-    trialTitle.innerText = trial.title;
-    const trialSummary = document.getElementById('trial-summary');
-    trialSummary.innerText = trial.summary || "No summary available";
-    const trialOrg = document.getElementById('trial-org');
-    trialOrg.innerText = trial.lead_org || "No organization available";
+    document.getElementById('trial-title').innerText = trial.title;
+    document.getElementById('trial-summary').innerText = trial.summary || "No summary available";
+    document.getElementById('trial-org').innerText = trial.lead_org || "No organization available";
 
-    const eligibility = trial.unstructured_trial_text;
     const elibigilityContainer = document.getElementById('trial-eligibility');
-    elibigilityContainer.innerHTML = ""; // Clear previous content
-    let count = 1;
-    for (const criterion of eligibility) {
-        elibigilityContainer.innerHTML += `<li>${criterion}</li>`;
-        count++;
+    elibigilityContainer.innerHTML = "";
+    if (trial.unstructured_trial_text && trial.unstructured_trial_text.length > 0) {
+        trial.unstructured_trial_text.forEach(c => {
+            elibigilityContainer.innerHTML += `<li>${c}</li>`;
+        });
+    } else {
+        elibigilityContainer.innerHTML = `<li>No eligibility criteria available</li>`;
+    }
+
+    const mapContainer = document.getElementById('trial-map');
+    mapContainer.innerHTML = ""; // Clear previous map if any
+    const map = L.map('trial-map').setView([37.0902, -95.7129], 4); // Default to USA view
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    if (trial.sites && trial.sites.length > 0) {
+        trial.sites.forEach(site => {
+            if (site.org_coordinates && site.org_coordinates.lat && site.org_coordinates.lon) {
+                const marker = L.marker([site.org_coordinates.lat, site.org_coordinates.lon]).addTo(map);
+
+                const popupContent = `
+                    <div style="font-size:0.9rem;">
+                        <strong>${site.org_name || "Unknown Site"}</strong><br>
+                        ${site.org_address_line_1 || ""} ${site.org_address_line_2 || ""}<br>
+                        ${site.org_city || ""}, ${site.org_state_or_province || ""} ${site.org_postal_code || ""}<br>
+                        <em>Status:</em> ${site.recruitment_status || "N/A"}<br>
+                        <em>Contact:</em> ${site.contact_name || "N/A"}<br>
+                        <em>Phone:</em> ${site.contact_phone || "N/A"}<br>
+                        <a href="mailto:${site.contact_email || '#'}">${site.contact_email || ""}</a>
+                    </div>
+                `;
+
+                marker.bindPopup(popupContent);
+
+                marker.on('mouseover', function () {
+                    this.openPopup();
+                });
+                marker.on('mouseout', function () {
+                    this.closePopup();
+                });
+            }
+        });
+
+        const group = new L.featureGroup(trial.sites
+            .filter(s => s.org_coordinates && s.org_coordinates.lat && s.org_coordinates.lon)
+            .map(s => L.marker([s.org_coordinates.lat, s.org_coordinates.lon]))
+        );
+        map.fitBounds(group.getBounds().pad(0.3));
     }
 }
 
