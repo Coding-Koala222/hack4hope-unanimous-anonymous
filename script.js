@@ -107,6 +107,33 @@ function loadInfo(trial) {
         );
         map.fitBounds(group.getBounds().pad(0.3));
     }
+
+    // create locations as a list too
+    // List view
+    const sitesListContainer = document.getElementById('trial-sites-list');
+    sitesListContainer.innerHTML = "";
+
+    if (trial.sites && trial.sites.length > 0) {
+        trial.sites.forEach(site => {
+            const statusClass = (site.recruitment_status || "").toLowerCase().includes("open")
+                ? "status-open"
+                : "status-closed";
+
+            sitesListContainer.innerHTML += `
+            <div class="site-card">
+                <h3>${site.org_name || "Unknown Site"}</h3>
+                <p>${site.org_address_line_1 || ""} ${site.org_address_line_2 || ""}</p>
+                <p>${site.org_city || ""}, ${site.org_state_or_province || ""} ${site.org_postal_code || ""}</p>
+                <p><strong>Contact:</strong> ${site.contact_name || "N/A"} | ${site.contact_phone || "N/A"}</p>
+                <p><a href="mailto:${site.contact_email || '#'}">${site.contact_email || ""}</a></p>
+                <span class="status-badge ${statusClass}">${site.recruitment_status || "N/A"}</span>
+            </div>
+        `;
+        });
+    } else {
+        sitesListContainer.innerHTML = `<p>No site locations available.</p>`;
+    }
+
 }
 
 const viewButton = document.getElementById('view-trials');
