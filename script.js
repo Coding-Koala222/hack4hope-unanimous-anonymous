@@ -60,6 +60,13 @@ function loadInfo(trial) {
     trialSummary.innerText = trial.summary || "No summary available";
     const trialOrg = document.getElementById('trial-org');
     trialOrg.innerText = trial.lead_org || "No organization available";
+
+    const eligibility = trial.unstructured_trial_text;
+    const elibigilityContainer = document.getElementById('trial-eligibility');
+    elibigilityContainer.innerHTML = ""; // Clear previous content
+    for (const criterion of eligibility) {
+        elibigilityContainer.innerHTML += `<p>${criterion}</p>`;
+    }
 }
 
 const viewButton = document.getElementById('view-trials');
