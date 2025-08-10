@@ -135,6 +135,17 @@ viewButton.onclick = async function () {
             `;
         }
 
+        let badges_div = `
+        <div class="horizontal-container">
+            <div class="badge cyan" data-full-date="minimum age">
+                ${minAge}
+            </div>
+            <div class="badge cyan" data-full-date="maximum age">
+                ${maxAge}
+            </div>
+            ${sex_badges}
+        </div>`;
+
         trialDiv.innerHTML = `
         <div class="trial-header">
             <div class="trial-text">
@@ -146,15 +157,7 @@ viewButton.onclick = async function () {
                 ${year}
             </div>
         </div>
-        <div class="horizontal-container">
-            <div class="badge cyan" data-full-date="minimum age">
-                ${minAge}
-            </div>
-            <div class="badge cyan" data-full-date="maximum age">
-                ${maxAge}
-            </div>
-            ${sex_badges}
-        </div>
+        ${badges_div}
         <p class="summary">${trial.summary}</p>
     `;
 
@@ -162,6 +165,8 @@ viewButton.onclick = async function () {
 
         trialDiv.onclick = function () {
             loadInfo(trial);
+            const titleContainer = document.getElementById('title-container');
+            titleContainer.innerHTML += badges_div;
         }
     }
 }
