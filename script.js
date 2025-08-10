@@ -64,8 +64,10 @@ function loadInfo(trial) {
     const eligibility = trial.unstructured_trial_text;
     const elibigilityContainer = document.getElementById('trial-eligibility');
     elibigilityContainer.innerHTML = ""; // Clear previous content
+    let count = 1;
     for (const criterion of eligibility) {
-        elibigilityContainer.innerHTML += `<p>${criterion}</p>`;
+        elibigilityContainer.innerHTML += `<p>${count}. ${criterion}</p>`;
+        count++;
     }
 }
 
