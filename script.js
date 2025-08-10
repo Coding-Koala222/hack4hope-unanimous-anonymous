@@ -44,8 +44,8 @@ backBtn.onclick = function () {
     const mainPage = document.getElementById('start_page');
     mainPage.classList.remove("hidden");
 }
-
 let trialMap = null;
+let trialMarkers = [];
 
 function loadInfo(trial) {
     document.getElementById('start_page').classList.add("hidden");
@@ -67,23 +67,22 @@ function loadInfo(trial) {
         elibigilityContainer.innerHTML = `<li>No eligibility criteria available</li>`;
     }
 
-    if (trialMap) {
-        trialMap.remove();
-        trialMap = null;
+    if (!trialMap) {
+        trialMap = L.map('trial-map').setView([37.0902, -95.7129], 4);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(trialMap);
+    } else {
+        trialMap.setView([37.0902, -95.7129], 4);
     }
 
-    // Initialize map
-    trialMap = L.map('trial-map').setView([37.0902, -95.7129], 4);
-
-    // Tiles
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; OpenStreetMap contributors'
-    }).addTo(trialMap);
+    trialMarkers.forEach(marker => trialMap.removeLayer(marker));
+    trialMarkers = [];
 
     if (trial.sites && trial.sites.length > 0) {
         trial.sites.forEach(site => {
             if (site.org_coordinates && site.org_coordinates.lat && site.org_coordinates.lon) {
-                const marker = L.marker([site.org_coordinates.lat, site.org_coordinates.lon]).addTo(map);
+                const marker = L.marker([site.org_coordinates.lat, site.org_coordinates.lon]).addTo(trialMap);
 
                 const popupContent = `
                     <div style="font-size:0.9rem;">
@@ -98,30 +97,23 @@ function loadInfo(trial) {
                 `;
 
                 marker.bindPopup(popupContent);
+                marker.on('mouseover', function () { this.openPopup(); });
+                marker.on('mouseout', function () { this.closePopup(); });
 
-                marker.on('mouseover', function () {
-                    this.openPopup();
-                });
-                marker.on('mouseout', function () {
-                    this.closePopup();
-                });
+                trialMarkers.push(marker);
             }
         });
 
-        const group = new L.featureGroup(trial.sites
-            .filter(s => s.org_coordinates && s.org_coordinates.lat && s.org_coordinates.lon)
-            .map(s => L.marker([s.org_coordinates.lat, s.org_coordinates.lon]))
-        );
-        map.fitBounds(group.getBounds().pad(0.3));
+        const markerGroup = L.featureGroup(trialMarkers);
+        trialMap.fitBounds(markerGroup.getBounds().pad(0.3));
     }
 
-    // create locations as a list too
     const sitesListContainer = document.getElementById('trial-sites-list');
     sitesListContainer.innerHTML = "";
 
     if (trial.sites && trial.sites.length > 0) {
         trial.sites.forEach(site => {
-            const statusClass = (site.recruitment_status || "").toLowerCase().includes("ACTIVE")
+            const statusClass = (site.recruitment_status || "").toLowerCase().includes("active")
                 ? "status-open"
                 : "status-closed";
 
@@ -139,7 +131,6 @@ function loadInfo(trial) {
     } else {
         sitesListContainer.innerHTML = `<p>No site locations available.</p>`;
     }
-
 }
 
 const viewButton = document.getElementById('view-trials');
