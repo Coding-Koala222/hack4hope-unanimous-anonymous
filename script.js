@@ -121,7 +121,6 @@ viewButton.onclick = async function () {
                 ${year}
             </div>
         </div>
-        <p class="summary">${trial.summary}</p>
         <div class="horizontal-container">
             <div class="badge cyan" data-full-date="minimum age">
                 ${minAge}
@@ -131,6 +130,7 @@ viewButton.onclick = async function () {
             </div>
             ${sex_badges}
         </div>
+        <p class="summary">${trial.summary}</p>
     `;
 
         trialsContainer.appendChild(trialDiv);
