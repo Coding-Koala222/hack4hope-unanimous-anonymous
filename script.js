@@ -45,14 +45,6 @@ backBtn.onclick = function () {
     mainPage.classList.remove("hidden");
 }
 
-const mapContainer = document.getElementById('trial-map');
-mapContainer.innerHTML = ""; // Clear previous map if any
-const map = L.map('trial-map').setView([37.0902, -95.7129], 4); // Default to USA view
-
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; OpenStreetMap contributors'
-}).addTo(map);
-
 function loadInfo(trial) {
     document.getElementById('start_page').classList.add("hidden");
     const infoPage = document.getElementById('info_page');
@@ -73,8 +65,13 @@ function loadInfo(trial) {
         elibigilityContainer.innerHTML = `<li>No eligibility criteria available</li>`;
     }
 
-    // clear the map
+    const mapContainer = document.getElementById('trial-map');
     mapContainer.innerHTML = ""; // Clear previous map if any
+    const map = L.map('trial-map').setView([37.0902, -95.7129], 4); // Default to USA view
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
 
     if (trial.sites && trial.sites.length > 0) {
         trial.sites.forEach(site => {
