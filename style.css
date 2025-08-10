@@ -134,8 +134,7 @@ body {
     border-radius: 16px;
     box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
     padding: 24px;
-    max-width: 800px;
-    margin: 20px auto;
+    width: 100%;
 }
 
 .info-header {
