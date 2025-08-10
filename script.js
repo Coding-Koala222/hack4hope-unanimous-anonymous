@@ -115,7 +115,7 @@ function loadInfo(trial) {
 
     if (trial.sites && trial.sites.length > 0) {
         trial.sites.forEach(site => {
-            const statusClass = (site.recruitment_status || "").toLowerCase().includes("open")
+            const statusClass = (site.recruitment_status || "").toLowerCase().includes("ACTIVE")
                 ? "status-open"
                 : "status-closed";
 
