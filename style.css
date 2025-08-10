@@ -122,5 +122,5 @@ body {
 .horizontal-container {
     display: flex;
     flex-direction: row;
-    gap: 2px;
+    gap: 5px;
 }
