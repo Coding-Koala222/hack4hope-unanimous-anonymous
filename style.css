@@ -124,3 +124,7 @@ body {
     flex-direction: row;
     gap: 5px;
 }
+
+.hidden {
+    display: none;
+}

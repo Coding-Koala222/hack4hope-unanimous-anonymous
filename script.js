@@ -34,6 +34,24 @@ for (const disease of diseases) {
     }
 }
 
+const backBtn = document.getElementById('back-button');
+backBtn.onclick = function () {
+    // hide the info page
+    const infoPage = document.getElementById('info_page');
+    infoPage.classList.add("hidden");
+    // show the main page
+    const mainPage = document.getElementById('start_page');
+    mainPage.classList.remove("hidden");
+}
+
+function loadInfo(trial) {
+    // hide the main page
+    const mainPage = document.getElementById('start_page');
+    mainPage.classList.add("hidden");
+    const infoPage = document.getElementById('info_page');
+    infoPage.classList.remove("hidden");
+}
+
 const viewButton = document.getElementById('view-trials');
 
 viewButton.onclick = async function () {
@@ -134,5 +152,9 @@ viewButton.onclick = async function () {
     `;
 
         trialsContainer.appendChild(trialDiv);
+
+        trialDiv.onclick = function () {
+            loadInfo(trial);
+        }
     }
 }
