@@ -87,24 +87,24 @@ viewButton.onclick = async function () {
         let sex_badges = "";
         if (structured_eligibility.sex === 'MALE') {
             sex_badges += `
-            <div class="badge blue">
+            <div class="badge blue" data-full-date="male">
                 <i class="bi bi-gender-male"></i>
             </div>
             `;
         } else if (structured_eligibility.sex === 'FEMALE') {
             sex_badges += `
             <div class="badge pink">
-                <i class="bi bi-gender-female"></i>
+                <i class="bi bi-gender-female" data-full-date="female"></i>
             </div>
             `;
         } else {
             sex_badges += `
-            <div class="badge blue">
+            <div class="badge blue" data-full-date="male">
                 <i class="bi bi-gender-male"></i>
             </div>
             `;
             sex_badges += `
-            <div class="badge pink">
+            <div class="badge pink" data-full-date="female">
                 <i class="bi bi-gender-female"></i>
             </div>
             `;
@@ -123,10 +123,10 @@ viewButton.onclick = async function () {
         </div>
         <p class="summary">${trial.summary}</p>
         <div class="horizontal-container">
-            <div class="badge cyan">
+            <div class="badge cyan" data-full-date="minimum age">
                 ${minAge}
             </div>
-            <div class="badge cyan">
+            <div class="badge cyan" data-full-date="maximum age">
                 ${maxAge}
             </div>
             ${sex_badges}
