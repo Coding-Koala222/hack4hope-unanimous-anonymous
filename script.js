@@ -66,7 +66,7 @@ function loadInfo(trial) {
     elibigilityContainer.innerHTML = ""; // Clear previous content
     let count = 1;
     for (const criterion of eligibility) {
-        elibigilityContainer.innerHTML += `<p>${count}. ${criterion}</p>`;
+        elibigilityContainer.innerHTML += `<li>${criterion}</li>`;
         count++;
     }
 }
