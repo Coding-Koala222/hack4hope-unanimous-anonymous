@@ -130,67 +130,77 @@ body {
 }
 
 #info_page {
-    background-color: #fff;
-    border-radius: 16px;
-    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
-    padding: 24px;
-    width: 85%;
-    margin: 20px auto;
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(135deg, #f9fafb, #e8eff7);
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    flex-direction: column;
+    animation: fadeIn 0.3s ease;
+    overflow-y: auto;
+    padding: 0;
+    z-index: 100;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .info-header {
     display: flex;
     align-items: center;
-    gap: 16px;
-    margin-bottom: 20px;
+    background-color: #ffffffcc;
+    backdrop-filter: blur(12px);
+    padding: 16px 24px;
+    border-bottom: 1px solid #e5e7eb;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
 }
 
-#back-button {
-    all: unset;
+.back-btn {
+    background: none;
+    border: none;
+    font-size: 1.6rem;
+    color: #374151;
+    margin-right: 16px;
     cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: #f3f4f6;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    border-radius: 8px;
+    padding: 6px 10px;
 }
-
-#back-button:hover {
-    background-color: #e5e7eb;
-    transform: scale(1.1);
+.back-btn:hover {
+    transform: translateX(-2px);
+    background-color: rgba(0,0,0,0.05);
 }
 
 #title-container {
-    flex-grow: 1;
+    flex: 1;
 }
-
 #trial-title {
-    font-size: 1.8em;
-    font-weight: 600;
+    margin: 0 0 6px 0;
+    font-size: 1.9rem;
+    font-weight: 700;
     color: #111827;
-    margin: 0;
 }
-
 #trial-title-badges {
-    margin-top: 8px;
     display: flex;
+    flex-wrap: wrap;
     gap: 8px;
 }
 
-#trial-org {
-    font-size: 1.2em;
-    color: #6b7280;
-    margin: 16px 0 8px;
+.info-body {
+    padding: 24px;
+    max-width: 900px;
+    margin: 0 auto;
 }
-
+#trial-org {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 14px;
+}
 #trial-summary {
-    font-size: 1em;
-    color: #4b5563;
+    font-size: 1rem;
     line-height: 1.6;
-    margin: 0;
-    width: 100%;
+    color: #4b5563;
 }
