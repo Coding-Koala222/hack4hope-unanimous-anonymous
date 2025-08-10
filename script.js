@@ -79,7 +79,6 @@ function loadInfo(trial) {
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; OpenStreetMap contributors'
     }).addTo(map);
-    }
 
     if (trial.sites && trial.sites.length > 0) {
         trial.sites.forEach(site => {
