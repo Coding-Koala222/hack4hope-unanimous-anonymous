@@ -39,6 +39,7 @@ backBtn.onclick = function () {
     // hide the info page
     const infoPage = document.getElementById('info_page');
     infoPage.classList.add("hidden");
+    infoPage.style.display = "none";
     // show the main page
     const mainPage = document.getElementById('start_page');
     mainPage.classList.remove("hidden");
