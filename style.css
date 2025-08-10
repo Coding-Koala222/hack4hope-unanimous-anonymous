@@ -128,3 +128,10 @@ body {
 .hidden {
     display: none;
 }
+
+#back-button {
+    all: unset;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+}

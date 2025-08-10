@@ -165,7 +165,8 @@ viewButton.onclick = async function () {
 
         trialDiv.onclick = function () {
             loadInfo(trial);
-            const titleContainer = document.getElementById('title-container');
+            const titleContainer = document.getElementById('trial-title-badges');
+            titleContainer.innerHTML = "";
             titleContainer.innerHTML += badges_div;
         }
     }
