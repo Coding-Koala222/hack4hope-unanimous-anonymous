@@ -90,6 +90,11 @@ body {
     color: #ec4899;
 }
 
+.badge.cyan {
+    border-color: #06b6d4;
+    color: #06b6d4;
+}
+
 .badge:hover {
     transform: scale(1.08);
     /*background-color: currentColor; */
@@ -112,4 +117,11 @@ body {
 
 .badge:hover::after {
     display: block;
+}
+
+.horizontal-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 2px;
 }

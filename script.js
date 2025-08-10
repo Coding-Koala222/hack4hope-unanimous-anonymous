@@ -122,6 +122,15 @@ viewButton.onclick = async function () {
             </div>
         </div>
         <p class="summary">${trial.summary}</p>
+        <div class="horizontal-container">
+            <div class="badge cyan">
+                ${minAge}
+            </div>
+            <div class="badge cyan">
+                ${maxAge}
+            </div>
+            ${sex_badges}
+        </div>
     `;
 
         trialsContainer.appendChild(trialDiv);
