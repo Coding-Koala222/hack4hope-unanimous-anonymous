@@ -50,6 +50,8 @@ function loadInfo(trial) {
     mainPage.classList.add("hidden");
     const infoPage = document.getElementById('info_page');
     infoPage.classList.remove("hidden");
+    // add display flex
+    infoPage.style.display = "flex";
 
     const trialTitle = document.getElementById('trial-title');
     trialTitle.innerText = trial.title;
